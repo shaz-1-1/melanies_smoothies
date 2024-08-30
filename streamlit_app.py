@@ -21,8 +21,8 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 #streamlit.stop()
 
 pd_df = my_dataframe.to_pandas()
-streamlit.dataframe(pd_df)
-streamlit.stop()
+#streamlit.dataframe(pd_df)
+#streamlit.stop()
                                                                       
 
 ingredients_list = streamlit.multiselect(
@@ -40,6 +40,10 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        streamlit.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+
         streamlit.subheader(fruit_chosen + 'Nutrition Infromation')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen)
         fv_df = streamlit.dataframe(data=fruityvice_response.json(), use_container_width=True)
