@@ -16,13 +16,13 @@ streamlit.write("The name on your Smoothie will be:", name_on_order)
 
 cnx=streamlit.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON')
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
 #streamlit.dataframe(data=my_dataframe, use_container_width=True)
 #streamlit.stop()
 
 pd_df = my_dataframe.to_pandas()
-#streamlit.dataframe(pd_df)
-#streamlit.stop()
+# streamlit.dataframe(pd_df)
+# streamlit.stop()
                                                                       
 
 ingredients_list = streamlit.multiselect(
