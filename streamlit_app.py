@@ -33,7 +33,8 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        streamlit.subheader(fruit_chosen + 'Nutrition Infromation')
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen)
         fv_df = streamlit.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 
