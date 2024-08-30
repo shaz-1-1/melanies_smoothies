@@ -9,7 +9,7 @@ streamlit.write(
 )
 
 name_on_order = streamlit.text_input("Name on Smoothie")
-st.write("The name on your Smoothie will be:", name_on_order)
+streamlit.write("The name on your Smoothie will be:", name_on_order)
 
 cnx=st.connection("snowflake")
 session = cnx.session()
